@@ -30,20 +30,23 @@ SDSP provides a single control plane to:
 
 ```mermaid
 flowchart TB
-  A[Client Intent: YAML/JSON]
-  B[Control Plane API]
-  C[Policy Engine]
-  D[Risk and Blast Radius]
-  E[Provisioner]
-  F1[Block: SAN/NVMe-oF]
-  F2[File: Distributed FS]
-  F3[Object: S3-Compatible]
-  G[Unified Namespace / Metadata Gateway]
-  H[Tiering Engine]
-  I[Warm Tier]
-  J[Cold Tier / Archive: Cloud]
-  K[Audit Trail]
-  L[Observability: Prometheus/OTel]
+  A["Client Intent (YAML/JSON)"]
+  B["Control Plane API"]
+  C["Policy Engine"]
+  D["Risk + Blast Radius"]
+  E["Provisioner"]
+
+  F1["Block: SAN, NVMe-oF"]
+  F2["File: Distributed FS"]
+  F3["Object: S3"]
+
+  G["Unified Namespace / Metadata"]
+  H["Tiering Engine"]
+  I["Warm Tier"]
+  J["Cold/Archive: Cloud"]
+
+  K["Audit Trail"]
+  L["Observability: Prom/OTel"]
 
   A --> B
   B --> C
