@@ -1,6 +1,6 @@
 # 🛰️ Software‑Defined Storage Platform (SDSP)
 
-> A generic, internal-style **software-defined storage platform** for **telemetry**, **manufacturing**, and **simulation** data at scale.
+> A **software-defined storage platform** for **telemetry**, **manufacturing**, and **simulation** data at scale.
 >
 > **Intent → Policy → Provision → Observe → Tier → Audit**
 
