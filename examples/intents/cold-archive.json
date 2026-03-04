@@ -1,0 +1,16 @@
+{
+  "tenant": "archive",
+  "workload": "mixed",
+  "criticality": "MEDIUM",
+  "storage": {
+    "type": "object",
+    "performance_tier": "cold",
+    "capacity_tb": 5000,
+    "replication": 2,
+    "protocol": "S3"
+  },
+  "tiering": {
+    "archive_after_days": 30,
+    "delete_after_days": 3650
+  }
+}

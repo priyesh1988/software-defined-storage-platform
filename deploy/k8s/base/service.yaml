@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sdsp-control-plane
+spec:
+  selector: { app: sdsp-control-plane }
+  ports:
+    - port: 8000
+      targetPort: 8000

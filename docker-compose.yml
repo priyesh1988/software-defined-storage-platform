@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  control-plane:
+    build: ./services/control-plane
+    ports:
+      - "8000:8000"
+    environment:
+      - SDSP_POLICY_PATH=/app/.sdsp/policy.yaml
+      - SDSP_AUDIT_PATH=/app/audit/audit.jsonl
+    volumes:
+      - ./services/control-plane/.sdsp:/app/.sdsp
+      - ./services/control-plane/audit:/app/audit
+  telemetry-ingest:
+    build: ./services/telemetry-ingest
+    environment:
+      - SDSP_CONTROL_PLANE=http://control-plane:8000
+    depends_on:
+      - control-plane
+  tiering-engine:
+    build: ./services/tiering-engine
+    environment:
+      - SDSP_POLICY_PATH=/app/policy/tiering.yaml
+    volumes:
+      - ./services/tiering-engine/policy:/app/policy

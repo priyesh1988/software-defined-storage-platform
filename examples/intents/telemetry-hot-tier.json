@@ -1,0 +1,16 @@
+{
+  "tenant": "mission-control",
+  "workload": "telemetry",
+  "criticality": "MISSION_CRITICAL",
+  "storage": {
+    "type": "block",
+    "performance_tier": "hot",
+    "capacity_tb": 200,
+    "replication": 3,
+    "protocol": "NVMe-oF"
+  },
+  "dependencies": [
+    "telemetry-bus",
+    "flight-analytics"
+  ]
+}

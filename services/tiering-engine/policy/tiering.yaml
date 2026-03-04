@@ -1,0 +1,11 @@
+tiers:
+  hot: nvme_cluster
+  warm: distributed_fs
+  cold: object_storage
+rules:
+  telemetry:
+    archive_after_days: 14
+  manufacturing:
+    archive_after_days: 90
+  simulation:
+    archive_after_days: 30

@@ -1,0 +1,15 @@
+{
+  "tenant": "factory",
+  "workload": "manufacturing",
+  "criticality": "HIGH",
+  "storage": {
+    "type": "file",
+    "performance_tier": "warm",
+    "capacity_tb": 500,
+    "replication": 3,
+    "protocol": "NFS"
+  },
+  "retention": {
+    "years": 7
+  }
+}

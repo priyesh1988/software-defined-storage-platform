@@ -1,0 +1,4 @@
+replicaCount: 2
+image:
+  repository: sdsp/control-plane
+  tag: latest

@@ -1,0 +1,22 @@
+approval_tiers:
+  LOW: ENGINEER
+  MEDIUM: TEAM_LEAD
+  HIGH: DIRECTOR
+  MISSION_CRITICAL: VP
+
+min_replication_by_criticality:
+  LOW: 2
+  MEDIUM: 2
+  HIGH: 3
+  MISSION_CRITICAL: 3
+
+encryption_required: true
+
+risk_weights:
+  change_magnitude: 1.0
+  dependency_blast_radius: 1.2
+  criticality_multiplier:
+    LOW: 1.0
+    MEDIUM: 1.2
+    HIGH: 1.5
+    MISSION_CRITICAL: 2.0

@@ -1,0 +1,12 @@
+{
+  "tenant": "simulation",
+  "workload": "simulation",
+  "criticality": "HIGH",
+  "storage": {
+    "type": "file",
+    "performance_tier": "hot",
+    "capacity_tb": 800,
+    "replication": 3,
+    "protocol": "parallel-fs"
+  }
+}
