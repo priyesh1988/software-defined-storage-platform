@@ -23,25 +23,43 @@ SDSP provides a single control plane to:
 
 ---
 
-## 📐 Architecture (high-level)
+## 📐 Architecture
+
+> GitHub Mermaid is strict about **one statement per line** and doesn’t always like HTML (`<br/>`) in node labels.
+> This diagram uses simple labels to render reliably.
 
 ```mermaid
 flowchart TB
-  A[Client Intent<br/>YAML/JSON] --> B[Control Plane API]
-  B --> C[Policy Engine]
-  C --> D[Risk & Blast Radius]
-  D --> E[Provisioner]
-  E --> F1[Block<br/>SAN/NVMe-oF]
-  E --> F2[File<br/>Distributed FS]
-  E --> F3[Object<br/>S3-compatible]
-  F1 --> G[Unified Namespace / Metadata Gateway]
+  A[Client Intent: YAML/JSON]
+  B[Control Plane API]
+  C[Policy Engine]
+  D[Risk and Blast Radius]
+  E[Provisioner]
+  F1[Block: SAN/NVMe-oF]
+  F2[File: Distributed FS]
+  F3[Object: S3-Compatible]
+  G[Unified Namespace / Metadata Gateway]
+  H[Tiering Engine]
+  I[Warm Tier]
+  J[Cold Tier / Archive: Cloud]
+  K[Audit Trail]
+  L[Observability: Prometheus/OTel]
+
+  A --> B
+  B --> C
+  C --> D
+  D --> E
+  E --> F1
+  E --> F2
+  E --> F3
+  F1 --> G
   F2 --> G
   F3 --> G
-  G --> H[Tiering Engine]
-  H --> I[Warm Tier]
-  H --> J[Cold Tier / Archive (Cloud)]
-  B --> K[Audit Trail]
-  B --> L[Observability<br/>Prometheus/OTel]
+  G --> H
+  H --> I
+  H --> J
+  B --> K
+  B --> L
 ```
 
 ---
@@ -158,10 +176,10 @@ curl -X POST http://localhost:8000/v1/intents/apply \
 
 ---
 
-## 🧠 Policy & Risk Model (crisp)
+## 🧠 Policy & Risk Model
 
-Policy is defined in `.sdsp/policy.yaml` and can enforce:
-- required replication factor for criticality
+Policy is defined in `services/control-plane/.sdsp/policy.yaml` and can enforce:
+- minimum replication factor by criticality
 - approval tiers
 - encryption-at-rest requirement
 - retention rules
@@ -176,7 +194,7 @@ Risk scoring is **explainable**:
 ## 🔍 Observability & Audit
 
 - **Prometheus metrics**: request count, risk tiers, provisioning latency
-- **OpenTelemetry tracing**: request spans (stub)
+- **OpenTelemetry tracing**: stubbed (ready to wire)
 - **Audit trail**: append-only JSONL with hash chaining (SOC2-friendly)
 
 ---
@@ -185,27 +203,7 @@ Risk scoring is **explainable**:
 
 - **Kubernetes**: `deploy/k8s` (base + dev/prod overlays)
 - **Helm**: `deploy/helm/sdsp`
-- **Terraform (AWS skeleton)**: `deploy/terraform/aws`
-
----
-
-## ✅ What’s “real internal platform” about this repo?
-
-- Clear separation: **control plane vs data plane**
-- Pluggable providers (block/file/object)
-- Policy-driven decisions + approval tiers
-- Multi-tenant intent model
-- Audit + observability baked in
-- Environment overlays and deployment artifacts
-
----
-
-## Next steps (easy upgrades)
-
-- swap provider stubs with Ceph/MinIO/NVMe-oF targets
-- wire Neo4j dependency graph for real blast radius
-- add Postgres for historical intents & audit indexing
-- add GitHub PR bot to comment risk on infra PRs
+- **Terraform**: `deploy/terraform/aws`
 
 ---
 
