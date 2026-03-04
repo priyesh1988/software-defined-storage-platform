@@ -25,28 +25,25 @@ SDSP provides a single control plane to:
 
 ## 📐 Architecture
 
-> GitHub Mermaid is strict about **one statement per line** and doesn’t always like HTML (`<br/>`) in node labels.
-> This diagram uses simple labels to render reliably.
-
 ```mermaid
 flowchart TB
-  A["Client Intent<br/>YAML / JSON"]
-  B["Control Plane<br/>API"]
-  C["Policy<br/>Engine"]
-  D["Risk +<br/>Blast Radius"]
+  A["Client Intent (YAML/JSON)"]
+  B["Control Plane API"]
+  C["Policy Engine"]
+  D["Risk + Blast Radius"]
   E["Provisioner"]
 
-  F1["Block Storage<br/>SAN / NVMe-oF"]
-  F2["File Storage<br/>Distributed FS"]
-  F3["Object Storage<br/>S3-Compatible"]
+  F1["Block: SAN, NVMe-oF"]
+  F2["File: Distributed FS"]
+  F3["Object: S3"]
 
-  G["Unified Namespace<br/>Metadata Gateway"]
-  H["Tiering<br/>Engine"]
-  I["Warm<br/>Tier"]
-  J["Cold Tier / Archive<br/>Cloud"]
+  G["Unified Namespace / Metadata"]
+  H["Tiering Engine"]
+  I["Warm Tier"]
+  J["Cold/Archive: Cloud"]
 
-  K["Audit<br/>Trail"]
-  L["Observability<br/>Prometheus / OTel"]
+  K["Audit Trail"]
+  L["Observability: Prom/OTel"]
 
   A --> B
   B --> C
